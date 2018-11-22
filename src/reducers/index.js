@@ -31,9 +31,37 @@ const tasks = handleActions(
       const newState = task.state === 'active' ? 'finished' : 'active';
       const updatedTask = { ...task, state: newState };
       return { ...state, [task.id]: updatedTask };
+    },
+    [actions.findTask](
+      state,
+      {
+        payload: { id }
+      }
+    ) {
+      const task = state[id];
+      const newState = task.state === 'active' ? 'finished' : 'active';
+      const updatedTask = { ...task, state: newState };
+      return { ...state, [task.id]: updatedTask };
     }
   },
   {}
+);
+
+const newTaskTitle = handleActions(
+  {
+    [actions.addTask]() {
+      return '';
+    },
+    [actions.updateNewTaskTitle](
+      state,
+      {
+        payload: { title }
+      }
+    ) {
+      return title;
+    }
+  },
+  ''
 );
 
 const newTaskText = handleActions(
@@ -55,5 +83,6 @@ const newTaskText = handleActions(
 
 export default combineReducers({
   tasks,
+  newTaskTitle,
   newTaskText
 });

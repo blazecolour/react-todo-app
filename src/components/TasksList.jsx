@@ -37,7 +37,7 @@ export default class TasksList extends React.Component {
               className="btn border-0 p-0 app-toggle-state mr-3"
               onClick={this.toggleTaskState(id)}
             >
-              -
+              +
             </button>
             <div className="mr-auto">
               {state === 'finished' ? <s>{text}</s> : text}
@@ -56,7 +56,7 @@ export default class TasksList extends React.Component {
 
   renderFilter([state, name]) {
     return this.state.activeFilter === state ? (
-      name
+     name
     ) : (
       <button
         key={state}
